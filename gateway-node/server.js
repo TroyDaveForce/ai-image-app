@@ -6,7 +6,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PYTHON_BACKEND_URL = 'http://localhost:8000';
+// Look for environment variable, fallback to localhost for local dev
+const PYTHON_BACKEND_URL = process.env.PYTHON_BACKEND_URL || 'http://localhost:8000';
 
 app.post('/api/generate', async (req, res) => {
     try {
@@ -30,7 +31,7 @@ app.get('/api/history', async (req, res) => {
     }
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-    console.log(`Gateway running on http://localhost:${PORT}`);
+    console.log(`Gateway running on port ${PORT}`);
 });
