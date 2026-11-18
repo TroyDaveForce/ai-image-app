@@ -13,7 +13,7 @@ function App() {
 
   const fetchHistory = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/history');
+      const response = await fetch('https://ai-image-gateway.onrender.com/api/history');
       const data = await response.json();
       if (response.ok) setHistory(data);
     } catch (err) {
@@ -40,7 +40,7 @@ function App() {
     if (aspectRatio === '9:16') { width = 768; height = 1344; }
 
     try {
-      const response = await fetch('http://localhost:3001/api/generate', {
+      const response = await fetch('https://ai-image-gateway.onrender.com/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
