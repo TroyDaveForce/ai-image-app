@@ -1,0 +1,275 @@
+/* Modern Dark Theme */
+:root {
+  --bg-color: #212121;
+  --panel-bg: #2f2f2f;
+  --text-primary: #ececec;
+  --text-secondary: #b4b4b4;
+  --accent: #10a37f; /* ChatGPT Green */
+  --accent-hover: #1a7f64;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid #444;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  margin: 5px 0 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.error-message {
+  color: #ff6b6b;
+  background: #3a1c1c;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Image Display */
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  max-width: 100%;
+}
+
+.generated-image {
+  max-width: 512px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.download-btn {
+  background-color: var(--panel-bg);
+  color: var(--text-primary);
+  border: 1px solid #555;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.download-btn:hover {
+  background-color: #444;
+}
+
+/* Input Area (Bottom) */
+.input-area {
+  padding: 20px;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+}
+
+.input-form {
+  width: 100%;
+  max-width: 768px;
+  display: flex;
+  gap: 10px;
+  background-color: var(--panel-bg);
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.prompt-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 10px;
+  outline: none;
+}
+
+.prompt-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.send-btn {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.send-btn:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+}
+
+.send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Dropdown Styling */
+.model-select {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: none;
+  border-right: 1px solid #555;
+  padding: 10px;
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+  max-width: 200px;
+}
+
+.model-select:focus {
+  color: var(--text-primary);
+}
+
+/* Ensure the form flexes correctly with the new dropdown */
+.input-form {
+  display: flex;
+  align-items: center;
+}
+
+/* Fix option background for Windows dark mode */
+.model-select option {
+  background-color: var(--panel-bg);
+  color: var(--text-primary);
+}
+
+/* History Gallery */
+.history-section {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+.history-section h2 {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.history-item {
+  background: var(--panel-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: 1px solid #444;
+}
+
+.history-item:hover {
+  transform: scale(1.05);
+}
+
+.history-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.history-prompt {
+  padding: 8px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Advanced Form Layout */
+.input-form-advanced {
+  width: 100%;
+  max-width: 768px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: var(--panel-bg);
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.small-input {
+  font-size: 0.8rem !important;
+  padding: 5px 10px !important;
+  border-top: 1px solid #444 !important;
+  border-radius: 0 !important;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}

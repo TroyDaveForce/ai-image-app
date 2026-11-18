@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+requests
+huggingface_hub
+fal-client
+openai
+pydantic
